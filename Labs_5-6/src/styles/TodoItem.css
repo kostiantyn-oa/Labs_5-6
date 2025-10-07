@@ -1,0 +1,156 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.todo-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 3px 10px rgba(102, 126, 234, 0.15);
+}
+
+.todo-item.completed {
+  background: #f0f0f0;
+  opacity: 0.7;
+}
+
+.todo-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #667eea;
+  flex-shrink: 0;
+}
+
+.todo-text {
+  font-size: 1rem;
+  color: #333;
+  word-break: break-word;
+  flex: 1;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.todo-edit-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #667eea;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.todo-edit-input:focus {
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.todo-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.edit-button,
+.delete-button,
+.save-button,
+.cancel-button {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+  opacity: 0.6;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.edit-button:hover {
+  background: #e3f2fd;
+}
+
+.delete-button:hover {
+  background: #fee;
+}
+
+.save-button,
+.cancel-button {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 6px 12px;
+  opacity: 1;
+}
+
+.save-button {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+}
+
+.save-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.3);
+}
+
+.cancel-button {
+  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+  color: white;
+}
+
+.cancel-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(244, 67, 54, 0.3);
+}
+
+@media (max-width: 600px) {
+  .todo-item {
+    padding: 12px 15px;
+  }
+
+  .todo-text {
+    font-size: 0.95rem;
+  }
+
+  .todo-edit-input {
+    font-size: 0.95rem;
+    padding: 6px 10px;
+  }
+
+  .todo-actions {
+    gap: 5px;
+  }
+
+  .edit-button,
+  .delete-button {
+    font-size: 1.1rem;
+    padding: 4px 8px;
+  }
+
+  .save-button,
+  .cancel-button {
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
+}

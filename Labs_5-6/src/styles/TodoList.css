@@ -1,0 +1,63 @@
+.todo-list-container {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  min-height: 400px;
+}
+
+.todo-title {
+  text-align: center;
+  color: #667eea;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.todos-wrapper {
+  margin-top: 20px;
+}
+
+.todos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  padding: 40px 20px;
+  font-size: 1.1rem;
+}
+
+.todos-stats {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 2px solid #f0f0f0;
+  display: flex;
+  justify-content: space-around;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.todos-stats p {
+  margin: 0;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .todo-list-container {
+    padding: 20px;
+  }
+
+  .todo-title {
+    font-size: 1.5rem;
+  }
+
+  .todos-stats {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+}
