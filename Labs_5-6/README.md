@@ -157,66 +157,66 @@ graph TD
 ### Використані патерни проектування
 
 #### 1. **Custom Hook Pattern**
-- **Де використано**: `useTodos`
+- **Де використано**: `useTodos`.
 Інкапсуляція складної логіки управління станом, side effects та бізнес-логіки в окремий переповторно використовуваний хук. Це дозволяє абстрагувати логіку роботи з даними від UI компонентів.
 
 #### 2. **Container/Presentational Pattern**
 - **Де використано**:
   - **Container**: `TodoList` (розумний компонент, що управляє даними)
-  - **Presentational**: `TodoForm`, `SearchBar`, `TodoItem`, `Pagination`, `LoadingSpinner`, `ErrorMessage` (тупі компоненти для відображення)
+  - **Presentational**: `TodoForm`, `SearchBar`, `TodoItem`, `Pagination`, `LoadingSpinner`, `ErrorMessage` (тупі компоненти для відображення).
 Розділення компонентів на два типи:
   - Контейнери: відповідають за логіку, отримують дані, управляють станом
   - Презентаційні: відповідають тільки за відображення, отримують дані через props
 
 
 #### 3. **Composition Pattern**
-- **Де використано**: `App` → `TodoList` → дочірні компоненти
+- **Де використано**: `App` → `TodoList` → дочірні компоненти.
 Побудова складних UI через композицію простих компонентів. `App` виступає як composition root, що ініціалізує структуру додатка.
 
 #### 4. **Props Drilling Pattern**
-- **Де використано**: Передача callbacks від `TodoList` до всіх дочірніх компонентів
+- **Де використано**: Передача callbacks від `TodoList` до всіх дочірніх компонентів.
 Передача даних і callback функцій через props від батьківського компонента до дочірніх. Всі інтеракції користувача піднімаються вгору через callbacks.
 
 #### 5. **Controlled Components Pattern**
-- **Де використано**: `TodoForm` (inputValue), `SearchBar` (searchTerm), `TodoItem` (editedTitle в режимі редагування)
+- **Де використано**: `TodoForm` (inputValue), `SearchBar` (searchTerm), `TodoItem` (editedTitle в режимі редагування).
 React контролює стан форм через state. Значення input'ів керуються через `value` та `onChange`.
 
 #### 6. **Optimistic UI Updates Pattern**
-- **Де використано**: `toggleTodo`, `editTodoTitle`, `deleteTodo` в `useTodos`
+- **Де використано**: `toggleTodo`, `editTodoTitle`, `deleteTodo` в `useTodos`.
 Оновлення UI негайно (оптимістично), перед отриманням відповіді від сервера. У разі помилки - відкат до попереднього стану.
 
 #### 7. **Error Boundary Pattern (Implicit)**
-- **Де використано**: `error` state в `useTodos` + `ErrorMessage` компонент
+- **Де використано**: `error` state в `useTodos` + `ErrorMessage` компонент.
 Централізована обробка помилок через стан. Всі помилки з API calls ловляться та зберігаються в `error` state, який потім відображається через `ErrorMessage`.
 
 #### 8. **Loading State Pattern**
-- **Де використано**: `isLoading` state + `LoadingSpinner` компонент
+- **Де використано**: `isLoading` state + `LoadingSpinner` компонент.
 Управління станом завантаження для асинхронних операцій. Показує спінер під час fetching даних.
 
 #### 9. **Separation of Concerns (API Layer)**
-- **Де використано**: `src/api/todosApi.js`
+- **Де використано**: `src/api/todosApi.js`.
 Винесення всієї логіки HTTP запитів до окремого модуля. Використання axios для створення API клієнта з базовою конфігурацією.
 
 #### 10. **Immutable State Updates Pattern**
-- **Де використано**: Всі update операції в `useTodos` (використання `map`, `filter`, spread operator)
+- **Де використано**: Всі update операції в `useTodos` (використання `map`, `filter`, spread operator).
 Створення нових копій стану замість мутації існуючого. Використання `.map()` для оновлень, `.filter()` для видалень, spread operator для об'єднання.
 
 #### 11. **Client-Side Filtering Pattern**
-- **Де використано**: `filteredTodos` в `useTodos`
+- **Де використано**: `filteredTodos` в `useTodos`.
 Фільтрація даних на стороні клієнта без додаткових запитів до сервера. Підтримка real-time пошуку по `searchTerm`.
 
 #### 12. **Pagination with API Integration Pattern**
-- **Де використано**: `currentPage`, `limitPerPage`, `skip` в `useTodos`
+- **Де використано**: `currentPage`, `limitPerPage`, `skip` в `useTodos`.
 Серверна пагінація через API параметри `limit` і `skip`. Клієнт запитує тільки необхідну порцію даних.
 
 #### 13. **Hybrid Local/Remote State Pattern**
-- **Де використано**: `localTodos` + `todos` (з API) в `useTodos`
+- **Де використано**: `localTodos` + `todos` (з API) в `useTodos`.
 Об'єднання локально створених завдань з завданнями з API. Локальні завдання мають ID > 1000000000000 для розрізнення.
 
-#### 14. **Conditional Rendering Pattern**
+#### 14. **Conditional Rendering Pattern**.
 - **Де використано**: В `TodoList` - умовне відображення спінера, помилок, порожнього стану, пагінації
 Відображення різних компонентів залежно від стану додатка (завантаження, помилка, порожній список, тощо).
 
-#### 15. **Event Handler Pattern**
+#### 15. **Event Handler Pattern**.
 - **Де використано**: Всі `handle*` функції в компонентах (`handleSubmit`, `handleSave`, `handleCancel`, `handleKeyPress`)
 Винесення логіки обробки подій в окремі функції з префіксом `handle`.
