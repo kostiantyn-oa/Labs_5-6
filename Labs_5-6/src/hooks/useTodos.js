@@ -23,13 +23,17 @@ export const useTodos = () => {
     try {
       const skip = (currentPage - 1) * limitPerPage;
       const data = await todosApi.getAllTodos(limitPerPage, skip);
-      const filteredTodos = data.todos.filter(todo => !deletedTodoIds.has(todo.id));
+      const filteredTodos = data.todos.filter(
+        (todo) => !deletedTodoIds.has(todo.id)
+      );
       setTodos(filteredTodos);
       setTotalTodos(data.total - deletedTodoIds.size);
 
       if (allTodos.length === 0) {
         const allData = await todosApi.getAllTodos(data.total, 0);
-        const filteredAllTodos = allData.todos.filter(todo => !deletedTodoIds.has(todo.id));
+        const filteredAllTodos = allData.todos.filter(
+          (todo) => !deletedTodoIds.has(todo.id)
+        );
         setAllTodos(filteredAllTodos);
       }
     } catch (err) {
@@ -162,9 +166,7 @@ export const useTodos = () => {
     const isLocalTodo = id > 1000000000000;
 
     if (isLocalTodo) {
-      setLocalTodos((prevLocal) =>
-        prevLocal.filter((todo) => todo.id !== id)
-      );
+      setLocalTodos((prevLocal) => prevLocal.filter((todo) => todo.id !== id));
       return;
     }
 
@@ -174,7 +176,6 @@ export const useTodos = () => {
     setError(null);
 
     try {
-
       setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
       setAllTodos((prevAll) => prevAll.filter((todo) => todo.id !== id));
       setDeletedTodoIds((prev) => new Set([...prev, id]));
